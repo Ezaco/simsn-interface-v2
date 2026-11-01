@@ -27,7 +27,7 @@ export interface LaxScheduleGame { id:number;season:number;week:number;gameType:
 export type LaxScheduleRequestStatus="pending_receiver"|"pending_admin"|"approved"|"denied_receiver"|"denied_admin"|"superseded"|"cancelled";
 export interface LaxScheduleRequest { id:number;season:number;week:number;gameContext:LaxGameContext;sendingTeam:LaxTeam;receivingTeam:LaxTeam;homeTeamId:number;awayTeamId:number;status:LaxScheduleRequestStatus;receiverIsAi:boolean;createdAt:string }
 export interface LaxTentativeGame { requestId:number;season:number;week:number;gameContext:LaxGameContext;status:LaxScheduleRequestStatus;isHome:boolean;opponent:LaxTeam }
-export interface LaxStanding { rank:number;team:LaxTeam;conferenceWins:number;conferenceLosses:number;totalWins:number;totalLosses:number }
+export interface LaxStanding { rank:number;team:LaxTeam;conferenceWins:number;conferenceLosses:number;totalWins:number;totalLosses:number;goalsFor:number;goalsAgainst:number;homeWins:number;awayWins:number;streak?:string|null;overallGrade?:string|null;offenseGrade?:string|null;defenseGrade?:string|null }
 export interface LaxConferenceStandings { conference:{id:number;name:string;abbreviation?:string};standings:LaxStanding[] }
 export interface LaxTournamentGame { id:number;week:number;tournamentRound:number;bracketSlot:number;gameName?:string;status:string;homeTeam:LaxTeam;awayTeam:LaxTeam;homeSeed:number;awaySeed:number;homeScore?:number;awayScore?:number }
 export interface LaxConferenceTournamentBracket { conference:{id:number;name:string;abbreviation?:string};roundCount:number;games:LaxTournamentGame[] }
