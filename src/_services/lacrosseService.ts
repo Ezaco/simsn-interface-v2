@@ -23,7 +23,7 @@ export interface LaxClaim { id:number; teamId:number; league:"college"; status:"
 export interface LaxLineupAssignment { playerId:number; isStarter:boolean; starterSlot?:number; midfieldRole?:string; fogoDepth?:number; fogoStrategy?:string; usage?:number; longShotProportion?:number; closeShotProportion?:number }
 export interface LaxRosterResponse { team:LaxTeam; players:LaxPlayer[]; aiControl:boolean }
 export type LaxGameContext="preseason"|"regular_season";
-export interface LaxScheduleGame { id:number;season:number;week:number;gameType:string;gameContext:LaxGameContext;status:string;isHome:boolean;isConferenceGame:boolean;conferenceAbbreviation?:string;opponent:LaxTeam;homeScore?:number;awayScore?:number;homeSeed?:number;awaySeed?:number;gameName?:string;isNeutral:boolean }
+export interface LaxScheduleGame { id:number;season:number;week:number;gameType:string;gameContext:LaxGameContext;status:string;isHome:boolean;isConferenceGame:boolean;conferenceAbbreviation?:string;opponent:LaxTeam;homeScore?:number;awayScore?:number;homeSeed?:number;awaySeed?:number;gameName?:string;isNeutral:boolean;streamChannel?:string|null }
 export type LaxScheduleRequestStatus="pending_receiver"|"pending_admin"|"approved"|"denied_receiver"|"denied_admin"|"superseded"|"cancelled";
 export interface LaxScheduleRequest { id:number;season:number;week:number;gameContext:LaxGameContext;sendingTeam:LaxTeam;receivingTeam:LaxTeam;homeTeamId:number;awayTeamId:number;status:LaxScheduleRequestStatus;receiverIsAi:boolean;createdAt:string }
 export interface LaxTentativeGame { requestId:number;season:number;week:number;gameContext:LaxGameContext;status:LaxScheduleRequestStatus;isHome:boolean;opponent:LaxTeam }
@@ -39,7 +39,7 @@ export interface LaxPlayerBoxScore { playerId:number;teamId:number;firstName:str
 export interface LaxGameBoxScore { gameId:number;season:number;week:number;gameContext:LaxGameContext;status:string;home:LaxTeamBoxScore;away:LaxTeamBoxScore;players:LaxPlayerBoxScore[] }
 export interface LaxPlayByPlayEvent { id:number;playNumber:number;homeTeamScore:number;awayTeamScore:number;possessionNumber?:number;period:number;timeRemaining:number;shotClockRemaining:number;playDuration:number;possessionTeamId?:number;actionTeamId?:number;actionType:string;outcomeType?:string;primaryPlayerId?:number;secondaryPlayerId?:number;defendingPlayerId?:number;isGoal:boolean;isInjury:boolean;isPenalty:boolean;playRemark:string;fieldPos:string;fieldArea:string;fieldX?:number;fieldY?:number }
 export interface LaxGamePlayByPlay { gameId:number;seasonId:number;seasonYear:number;week:number;status:string;homeTeamId:number;awayTeamId:number;homeTeamScore?:number;awayTeamScore?:number;plays:LaxPlayByPlayEvent[] }
-export interface LaxWeeklyGame { id:number;season:number;week:number;gameContext:LaxGameContext;status:string;homeTeam:LaxTeam;awayTeam:LaxTeam;homeScore?:number;awayScore?:number;gameName?:string;isNeutral:boolean;isConferenceGame:boolean;isCt:boolean;isNt:boolean }
+export interface LaxWeeklyGame { id:number;season:number;week:number;gameContext:LaxGameContext;status:string;homeTeam:LaxTeam;awayTeam:LaxTeam;homeScore?:number;awayScore?:number;gameName?:string;isNeutral:boolean;isConferenceGame:boolean;isCt:boolean;isNt:boolean;streamChannel?:string|null }
 export interface LaxWeeklyScheduleResponse { season:number;week:number;games:LaxWeeklyGame[] }
 export const LacrosseService={
  getTeams:()=>GetCall<{teams:LaxTeam[]}>(`${base}/teams?league=college`),
